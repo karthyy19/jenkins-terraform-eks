@@ -9,8 +9,8 @@ pipeline {
         awsRegion = "us-east-2"
     }
     tools {
-        maven "MAVEN"
-        jdk "OracleJDK17"
+        maven "Maven"
+        jdk "JDK-17"
     }
     stages {
         stage ("init") {
