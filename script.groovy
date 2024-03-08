@@ -15,6 +15,7 @@ def buildImage() {
 
 def pushImage() {
     echo "Push Docker Image to ECR"
+    withCredentials([aws(credentialsId: 'AWS_Credentials', accessKeyVariable: 'AWS_ACCESS_KEY_ID', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
     docker.withRegistry (imageRegUrl, awsEcrCreds) {
         dockerImage.push ("$BUILD_NUMBER")
         dockerImage.push ('latest')
