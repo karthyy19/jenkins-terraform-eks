@@ -15,13 +15,12 @@ def buildImage() {
 
 def pushImage() {
     echo "Push Docker Image to ECR"
-    withCredentials([aws(credentialsId: 'AWS_Credentials')]) {
     docker.withRegistry (imageRegUrl, awsEcrCreds) {
         dockerImage.push ("$BUILD_NUMBER")
         dockerImage.push ('latest')
     }
 }
-}
+
 
 def provisionEksCluster() {
     withAWS(credentials: 'JenkinsAWSCLI', region: 'us-east-2') {
