@@ -21,6 +21,7 @@ def pushImage() {
         dockerImage.push ('latest')
     }
 }
+}
 
 def provisionEksCluster() {
     withAWS(credentials: 'JenkinsAWSCLI', region: 'us-east-2') {
